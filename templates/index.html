@@ -5,16 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Landing Page</title>
+  <title>Dashboard</title>
   <!-- Bring in our bootstrap stylesheet -->
-  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/css/bootstrap/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="../static/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="../static/css/style.css">
+  <!--country flag-->
 
-
+  
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -28,7 +28,6 @@
   <!-- D3 JavaScript -->
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
-  <script src="../static/js/test.js"></script>
 </head>
 
 
@@ -36,7 +35,7 @@
 <body>
     <!-- brand and toggle navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <strong><a class="navbar-brand" href="index.html">Wuhan Coronavirus Situation Dashboard</a></strong>
+        <strong><a class="navbar-brand" href="index.html">Coronavirus Dashboard</a></strong>
         <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" 
         data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" 
         aria-label="Toggle navigation">
@@ -45,111 +44,150 @@
 
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav ml-auto">
-                    <!-- dropdown navibar -->
-                    <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" 
-                    aria-haspopup="true" aria-expanded="false">Plots</a>
-                        <div class="dropdown-menu dropdown-menu-right float-right" style="position:absolute;">
-                            <a class="dropdown-item" href="maxTemp.html">Max Temperature</a>
-                            <a class="dropdown-item" href="humidity.html">Humidity</a>
-                            <a class="dropdown-item" href="cloudiness.html">Cloudiness</a>
-                            <a class="dropdown-item" href="windspeed.html">Wind Speed</a>
-                        </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Global Map</a>
+                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="china.html">Cases in China</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="comparison.html">Historical Data</a>
+                        <a class="nav-link" href="forecast.html">Forecast and Comparison</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="data.html">Data</a>
+                        <a class="nav-link" href="death_age.html">Detailed Analysis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="current_china.html">Data</a>
                     </li>
             </ul>
         </div>
     </nav>   
+    
 
 
-    <div class="container">
-        <div class="row top-buffer">
+    <div class="container-fluid">
+        <div class="row top-buffer"></div>  <!-- top buffer -->
     <!--Normally these medium columns go full wide on small screen sizes-->
             <!-- <div class="row row-cols-1 row-cols-md-4"> -->
             <div class="row">
-                <div class = "card-deck"> <!--this is used separate cards-->
-                <div class="col-md-3">
-                    <div class="card text-white bg-primary mb-3" style="min-width: 18rem; max-height:8rem">
-                        <div class="card-header">Total Confirmed</div>
-                        <div class="card-body">
-                        
+                <div class = "card-group w-100" id = "card-group"> <!--card-deck is used separate cards/card group make it together-->
+                    <div class="col">
+                        <div class="card text-white bg-danger">
+                            <div class="card-header" id="card-header" >Total Confirmed</div>
+                            <div class="card-body" id="card-body"></div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card text-white bg-danger mb-3" style="min-width: 18rem; max-height:8rem">
-                        <div class="card-header">Total Suspected</div>
-                        <div class="card-body">
-                         
+                    <div class="col">
+                        <div class="card text-white bg-warning" >
+                            <div class="card-header" id="card-header">Total Suspected</div>
+                            <div class="card-body" id="card-body"></div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card text-white bg-secondary mb-3" style="min-width: 18rem; max-height:8rem">
-                        <div class="card-header">Total Cured</div>
-                        <div class="card-body">
-                          
+                    <div class="col">
+                        <div class="card text-white bg-secondary">
+                            <div class="card-header" id="card-header" >Total Dead</div>
+                            <div class="card-body" id="card-body"></div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card text-white bg-success mb-3" style="min-width: 18rem; max-height:8rem">
-                        <div class="card-header">Total Death</div>
-                        <div class="card-body">
-                          
+                    <div class="col">
+                        <div class="card text-white bg-success">
+                            <div class="card-header" id="card-header">Total Recovered</div>
+                            <div class="card-body" id="card-body"></div>
                         </div>
-                    </div>
                 </div>
             </div> <!--card deck-->
         </div> <!--row-->
+    </div> <!--container-->
 
-        <section class="row">
-            <div class="col-lg-9">
-                <div class="content" id="landing-content">
-                    <h1 class="header">Summary: Latitude vs. X</h1>
-                    <hr class="content-hr">
-                    <img id="landing_image" src="Resources/assets/images/Fig1.png" alt="latittude vs x">
-                    <p>The purpose of this project was to analyze how weather changes as you get closer to the equator.
-                    To accomplish this analysis, we first pulled data from the OpenWeatherMap API to assemble a dataset
-                    on over 500 cities.
-                    </p>
-                    <br>
-                    <p>After assembling the dataset, we use Matplotlib to plot various aspects of the weather vs. latittude.
-                    Factors we looked at included:temperature, cloudiness, windspeed, and humidity. This site provides the
-                    source data and visualizations created as part of the analysis, as welll as explanations and descriptions of
-                    any trends and correlations witnessed.
-                    </p>
-                </div> 
-            </div> 
 
-            <div class="col-lg-3">
-                <div class="sidebar">
-                    <h2 class="sidebar_header">Visualizations</h2>
-                    <hr>
-                    <div class="sidebar-images" id="sidebar-images">
-                        <a href="maxTemp.html"><img class="sidebar-image" id="maxT_figure" src="Resources/assets/images/Fig1.png"  alt="maxTemp"></a>
-                        <a href="humidity.html"><img class="sidebar-image" id="humidity_figure" src="Resources/assets/images/Fig2.png"  alt="humidity"></a>
-                        <a href="cloudiness.html"><img class="sidebar-image" id="cloudness_figure" src="Resources/assets/images/Fig3.png"  alt="cloudness" ></a>
-                        <a href="windspeed.html"><img class="sidebar-image" id="windspeed_figure" src="Resources/assets/images/Fig4.png"  alt="windspeed"></a> 
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-3">
+                <div list-group-container>
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item active">
+                          <a class="nav-link active" data-toggle="tab" href="#world_list">World</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-toggle="tab" href="#province_list">Province</a>
+                        </li>
+                    </ul> <!--nav tabs-->
+
+                    <div class="scrollbar scrollbar-pink bordered-pink thin">
+                        <div class="force-overflow">
+                      
+                        <div id="myTabContent" class="tab-content">
+                            <div class="tab-pane active" id="world_list">
+                                    <div class="list-group-world" id="list-group-world"></div>
+                            </div>
+                            
+
+                            <div class="tab-pane fade" id="province_list">
+                                <div class="list-group-province" id="list-group-province"></div>
+                            </div>
+                        </div>  
                     </div>
-                </div>
-            </div>
-        </section>
-        </div>  <!-- top buffer -->
+                    </div>
+                </div> <!--list-group-container-->
+            </div> <!--col-3-->
+
+
+
+            <div class="col-9">
+                <div class="row">
+                    <div class ="col-12">
+                        <div class=map-container>
+                            <div id="map"></div>
+                        </div>
+                    </div>
+                </div> <!--col-9-row-->
+                <div class=info-container>
+                    <div class="row" id="info-row">
+                        <div class = "card-group w-100">
+                            <div class="col" id="col-bottom">
+                                <div class="card border-light" style="max-width: 20rem;">
+                                    <!-- <div class="card-header">Header</div> -->
+                                    <div class="card-body" id="bot-cardbody">
+                                    <h6 class="card-title">Last Updated at </h6>
+                                    <p class="card-text" style="font-size:24px; text-align:center;color:white">2/7/2020, 7:17PM</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col" id="col-bottom">
+                                <div class="card border-light" style="max-width: 20rem;">
+                                    <!-- <div class="card-header">Header</div> -->
+                                    <div class="card-body"  id="bot-cardbody">
+                                    <h6 class="card-title">Data source</h6>
+                                    <!-- <p class="card-text">“https://ncov.dxy.cn/ncovh5/view/pneumonia”</p> -->
+                                    <a href="https://ncov.dxy.cn/ncovh5/view/pneumonia" class="">https://ncov.dxy.cn/ncovh5/view/pneumonia</a>
+                                    <br>
+                                    <a href="https://en.wikipedia.org/wiki/Timeline_of_the_2019%E2%80%9320_Wuhan_coronavirus_outbreak" class="">https://en.wikipedia.org/wiki/Timeline_of_the_2019</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!--card-->
+                    </div>
+                </div> <!--info container-->
+
+            </div> <!--col-9-->
+            
+         
+        </div> <!--row-->
     </div>
+    
 
 
  <!-- Footer -->
     <footer>
         <div class="footer navbar-fixed-bottom">&copy; Copyright Binqian Gao, Mohan Xing, Peirang Xu, Vicky Zhang 2020. All Rights Reserved.</div>
+        <script src="../static/js/test.js"></script>
+        <!-- API Key -->
+        <script type="text/javascript" src="../static/js/config.js"></script>
+        <!-- Our JavaScript -->
+        <script type="text/javascript" src="../static/js/logic.js"></script>
     </footer>
 </body>
 </html>
 
 
-       
