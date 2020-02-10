@@ -76,7 +76,7 @@
             text: "Confirmed Cases Reproduction Rate <br> (semi-log scale)",
             font: {
               family: 'sans-serif',
-              size: 28,
+              size: 20,
               color: '#ebf1f5'
             }
           },
@@ -99,10 +99,11 @@
             traceorder: 'normal',
             font: {
               family: 'sans-serif',
-              size: 25,
+              size: 20,
               color: '#ffffff'
             }
-        }
+        },
+        height: 300
       };
       
     
@@ -126,7 +127,7 @@
         text: "Recovery Rate <br> (semi-log scale)",
         font: {
           family: 'sans-serif',
-          size: 28,
+          size: 20,
           color: '#ebf1f5'
         }
       },
@@ -149,10 +150,11 @@
         traceorder: 'normal',
         font: {
           family: 'sans-serif',
-          size: 25,
+          size: 20,
           color: '#ffffff'
         }
-    }
+    },
+      height:300,
   };
     
 

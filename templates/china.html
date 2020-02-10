@@ -70,63 +70,62 @@
   
 
      <div class="container-fluid">    
-          <div id="bubbleplots">
+          
             <div class="bubbleplot" data-num="0">              
                     <div class="row row-eq-height">
+                      
                         <div class="col"><br>
-                          <h1>Selected Province</h1>
+                          <h5 >Selected Province</h5>
                               <select class="provincedata" id="mySelect">
                                 <option value="" selected disabled hidden>Choose here</option>
                               </select> 
                         </div>
-                        <div class="col">
-                           <div class="card text-white bg-danger" >
-                              <div class="card-header" style="font-size: 40px" >Total Confirmed</div>
-                              <div class="card-body" style="font-size: 40px; margin-bottom: 10%;" id="total_confirmed"></div>                            
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="card text-white bg-secondary">
-                              <div class="card-header" style="font-size: 40px" >Total Dead</div>
-                              <div class="card-body" style="font-size: 40px; margin-bottom: 10%;" id="total_death"></div>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="card text-white bg-warning">
-                              <div class="card-header"style="font-size: 40px">Weekly Increase Rate</div>
-                              <div class="card-body" style="font-size: 40px; margin-bottom: 10%;" id="w_rate"></div>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="row content row-eq-height}">
-                      <div class="col-4">
-                        <h3 style="color:orange;  margin: 1">Confirmed cases in Hubei increase exponentially.</h3>
-                        <h3 style ="color:ghostwhite; margin: 1">Confirmed cases in all other provinces increase, but not exponentially.</h3>                      
-                           <div class= "container" id="myjDiv2" style ="margin-bottom: 25px"></div> 
-                          <div class= "container" id="myjDiv" style ="margin-bottom: 25px"></div> 
+                        <div class="col-lg-3">
+                              <div class="jcard text-white bg-danger" >
+                                <div class="card-jheader">Total Confirmed</div>
+                                <div class="card-jbody" id="total_confirmed" ></div>
+                                </div>                            
+                            </div>
+                       
+                            <div class="col-lg-3">
+                              <div class="jcard text-white bg-secondary">
+                                  <div class="card-jheader" >Total Dead</div>
+                                  <div class="card-jbody"  id="total_death" ></div>
+                                </div>
+                            </div>                      
+                            <div class="col-lg-3">
+                              <div class="jcard text-white bg-warning">
+                                  <div class="card-jheader">Weekly Increase Rate</div>
+                                  <div class="card-jbody" id="w_rate" ></div>
+                                  </div>
+                              </div>
+                       
+                      </div>
+                    <div class="row">
+                      <h3 style="color:orange;  margin-left: 1rem; margin-top:1rem; font-size:20px">Confirmed cases in Hubei increase exponentially. <br>Confirmed cases in all other provinces increase, but not exponentially.</h3>
+                    </div>                
+                  
+                    <div class="row content jrow-eq-height">
+                      <div class="col-4">                                   
+                          <div id="myjDiv2"></div> 
+                          <div id="myjDiv"></div> 
                         </div>
                       <div class="col-8">
-                        <div class="container">                              
-                          <br><br><br>
-                          <div class="plot" id="plotdiv" ></div>
-                          <br><br>
-                          <div class="plot" id="plotbar" ></div>
-                        </div>
+                        <div class="container-fluid" >        
+                          <div class="plot" id="plotdiv"></div> 
+                          <div class="plot" id="plotbar" style="margin-top:1rem"></div>
+                         </div>
                       </div>
                     </div>
-            </div>
-          </div>
-      </div>
-  
-  
-  
+              </div>
+          
+      </div>  
 
 
-      <!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
-<footer>
+ <footer>
   <div class="footer navbar-fixed-bottom">&copy; Copyright Binqian Gao, Mohan Xing, Peirang Xu, Vicky Zhang 2020. All Rights Reserved.</div>
   <!-- <script src="../static/js/test.js"></script> -->
-  <!--Jessica js script-->
+
   <script type="text/javascript" src="../static/js/plot-Jess.js"></script>
   <script type="text/javascript" src="../static/js/table-Jess.js"></script>
 </footer>
